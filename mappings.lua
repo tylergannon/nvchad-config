@@ -6,6 +6,8 @@ M.general = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<leader>w"] = { "<cmd> w <CR>", "Save buffer", opts = { nowait = true } },
     ["<leader>q"] = { "<cmd> wa <CR><cmd> qa <CR>", "Save all buffers and exit now." },
+    ["<leader>gl"] = { "<cmd> LazyGit <CR>", "Open Lazygit"},
+    ["<leader>gk"] = { "<cmd> lua require('telescope').extensions.lazygit.lazygit() <CR>", "Find git repo from session"}
   },
 }
 

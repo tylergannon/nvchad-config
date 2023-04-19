@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -21,11 +21,30 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = false,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "kdheepak/lazygit.nvim" },
+    },
 
+    opts = {
+      extensions_list = { "themes", "terms", "lazygit" },
+      extensions = {
+        lazygit = {
+          prompt_title = "[ Open Lazygit ]",
+        },
+      },
+    },
+  },
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -47,14 +66,11 @@ local plugins = {
     end,
   },
 
-  { "kdheepak/lazygit.nvim" },
-
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
 }
 
 return plugins
