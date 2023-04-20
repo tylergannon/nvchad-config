@@ -16,3 +16,15 @@ end
 
 -- 
 -- lspconfig.pyright.setup { blabla}
+--
+lspconfig.yamlls.setup {
+  settings = {
+    yaml = {
+      validate = true,
+      completion = true,
+      hover = true,
+      sortKeys = false,
+    }
+  }
+}
+
