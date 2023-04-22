@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "svelte", "tailwindcss" }
+local servers = { "html", "cssls", "tsserver", "tailwindcss" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,8 +13,20 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
--- 
+lspconfig.svelte.setup {
+  settings = {
+    svelte = {
+      plugin = {
+        svelte = {
+          format = {
+            enable = true,
+          }
+        }
+      }
+    }
+  }
+}
+--
 -- lspconfig.pyright.setup { blabla}
 --
 lspconfig.yamlls.setup {
@@ -24,7 +36,6 @@ lspconfig.yamlls.setup {
       completion = true,
       hover = true,
       sortKeys = false,
-    }
-  }
+    },
+  },
 }
-
